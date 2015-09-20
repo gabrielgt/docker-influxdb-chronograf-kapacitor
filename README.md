@@ -13,7 +13,7 @@ It runs on latest Debian version with the help of supervisord. See :
 ```
 #!shell
 
-docker run -d -t -p 8083:8083 -p 8086:8086 -p 10000:10000  <yourname>/influxdb:<yourtag>
+docker build -t <yourname>/influxdb:<yourtag> .
 
 ```
 
