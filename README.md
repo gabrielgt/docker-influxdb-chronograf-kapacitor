@@ -14,6 +14,7 @@ InfluxDB data are so far in /opt/influxdb/instance and configuration file is in 
 
 ## Release Notes ##
 
+* 20151123 : Update to InfluxDB 0.9.5 & Chronograf 0.3.2
 * 20151001 : Update to InfluxDB 0.9.4.2 & Chronograf 0.2
 * 20150920 : Initial version with InfluxDB 0.9.4.1 & Chronograf 0.1
 
