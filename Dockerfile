@@ -4,17 +4,16 @@ MAINTAINER Nicolas Steinmetz <public+docker@steinmetz.fr>
 RUN sed -i -e "s/httpredir/ftp2\.fr/g" /etc/apt/sources.list
 RUN sed -i -e "s/main/main contrib non-free/g" /etc/apt/sources.list
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt upgrade -y
-RUN DEBIAN_FRONTEND=noninteractive apt install -y apt-utils python-setuptools ca-certificates
+RUN DEBIAN_FRONTEND=noninteractive apt install -y apt-utils python-setuptools ca-certificates apt-transport-https
 RUN easy_install supervisor
 
-ADD https://s3.amazonaws.com/influxdb/influxdb_0.9.6_amd64.deb /tmp/influxdb_0.9.6_amd64.deb
-RUN dpkg -i /tmp/influxdb_0.9.6_amd64.deb
+COPY repo/influxdb.list /etc/apt/sources.list.d/influxdb.list
+ADD https://repos.influxdata.com/influxdb.key /tmp/influxdb.key
+RUN apt-key add /tmp/influxdb.key
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y influxdb kapacitor
 
 ADD https://s3.amazonaws.com/get.influxdb.org/chronograf/chronograf_0.4.0_amd64.deb /tmp/chronograf_0.4.0_amd64.deb
 RUN dpkg -i /tmp/chronograf_0.4.0_amd64.deb
-
-ADD https://s3.amazonaws.com/influxdb/kapacitor_0.2.0-1_amd64.deb /tmp/kapacitor_0.2.0-1_amd64.deb
-RUN dpkg -i /tmp/kapacitor_0.2.0-1_amd64.deb
 
 COPY conf/config.toml /opt/chronograf/
 COPY conf/influxdb.conf /etc/influxdb/influxdb.conf
