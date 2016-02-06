@@ -12,8 +12,8 @@ ADD https://repos.influxdata.com/influxdb.key /tmp/influxdb.key
 RUN apt-key add /tmp/influxdb.key
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y influxdb kapacitor
 
-ADD https://s3.amazonaws.com/get.influxdb.org/chronograf/chronograf_0.4.0_amd64.deb /tmp/chronograf_0.4.0_amd64.deb
-RUN dpkg -i /tmp/chronograf_0.4.0_amd64.deb
+ADD https://s3.amazonaws.com/get.influxdb.org/chronograf/chronograf_0.10.0_amd64.deb /tmp/chronograf_0.10.0_amd64.deb
+RUN dpkg -i /tmp/chronograf_0.10.0_amd64.deb
 
 COPY conf/config.toml /opt/chronograf/
 COPY conf/influxdb.conf /etc/influxdb/influxdb.conf
