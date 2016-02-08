@@ -23,6 +23,7 @@ docker run -d -t -v /path/to/influxdb/data:/data/influxdb -v /path/to/chronograf
 
 ## Release Notes ##
 
+* 20160208 : All packages are retrieved from InfluxData Debian Repo :-)
 * 20160206 : Update for 0.10.0 release as Chronograf still not yet in [debian repo](https://github.com/influxdata/kapacitor/issues/222)
 * 20151209 : Add debian repo so that we use latest stable version of InfluxDB and Kapacitor - Chronograf is not yet in repo.
 * 20151209 : Update to InfluxDB 0.9.6 & Chronograf 0.4.0 & Kapacitor 0.2.0 + add /data/{influxdb,chronograf,kapacitor}/ to mount volumes.
