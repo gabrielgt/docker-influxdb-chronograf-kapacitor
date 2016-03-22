@@ -11,7 +11,7 @@ COPY repo/influxdb.list /etc/apt/sources.list.d/influxdb.list
 ADD https://repos.influxdata.com/influxdb.key /tmp/influxdb.key
 RUN apt-key add /tmp/influxdb.key \
 	&& apt update \
-	&&  EBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends influxdb kapacitor chronograf
+	&& DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends influxdb kapacitor chronograf
 
 COPY conf/config.toml /opt/chronograf/
 COPY conf/influxdb.conf /etc/influxdb/influxdb.conf
